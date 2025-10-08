@@ -1,9 +1,19 @@
 package com.example.hopitalnumerique.Model;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@ApplicationScoped
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Entity
 @Table(name = "docteur")
 public class Docteur extends Personne{
@@ -27,50 +37,4 @@ public class Docteur extends Personne{
         this.planing = planing;
     }
 
-    public Docteur() {
-        super();
-    }
-
-
-    public int getIdDoecteur() {
-        return idDoecteur;
-    }
-
-    public void setIdDoecteur(int idDoecteur) {
-        this.idDoecteur = idDoecteur;
-    }
-
-    public String getSpecialite() {
-        return specialite;
-    }
-
-    public void setSpecialite(String specialite) {
-        this.specialite = specialite;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public List<Consultation> getPlaning() {
-        return planing;
-    }
-
-    public void setPlaning(List<Consultation> planing) {
-        this.planing = planing;
-    }
-
-    @Override
-    public String toString() {
-        return "Docteur{" +
-                "idDoecteur=" + idDoecteur +
-                ", specialite='" + specialite + '\'' +
-                ", department=" + department +
-                ", planing=" + planing +
-                '}';
-    }
 }

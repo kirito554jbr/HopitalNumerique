@@ -1,9 +1,19 @@
 package com.example.hopitalnumerique.Model;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@ApplicationScoped
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Entity
 @Table(name = "patient")
 public class Patient extends Personne{
@@ -25,57 +35,4 @@ public class Patient extends Personne{
         this.consultations = consultations;
     }
 
-    public Patient(int idPatient, float poids, float taille, List<Consultation> consultations) {
-        this.idPatient = idPatient;
-        this.poids = poids;
-        this.taille = taille;
-        this.consultations = consultations;
-    }
-
-    public Patient() {
-
-    }
-
-
-    public int getIdPatient() {
-        return idPatient;
-    }
-
-    public void setIdPatient(int idPatient) {
-        this.idPatient = idPatient;
-    }
-
-    public float getPoids() {
-        return poids;
-    }
-
-    public void setPoids(float poids) {
-        this.poids = poids;
-    }
-
-    public float getTaille() {
-        return taille;
-    }
-
-    public void setTaille(float taille) {
-        this.taille = taille;
-    }
-
-    public List<Consultation> getConsultations() {
-        return consultations;
-    }
-
-    public void setConsultations(List<Consultation> consultations) {
-        this.consultations = consultations;
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "idPatient=" + idPatient +
-                ", poids=" + poids +
-                ", taille=" + taille +
-                ", consultations=" + consultations +
-                '}';
-    }
 }

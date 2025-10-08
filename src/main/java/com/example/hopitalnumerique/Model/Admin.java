@@ -1,7 +1,17 @@
 package com.example.hopitalnumerique.Model;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@ApplicationScoped
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Entity
 @Table(name = "Admin")
 public class Admin extends Personne{
@@ -10,26 +20,4 @@ public class Admin extends Personne{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAdmin;
 
-    public Admin(int idAdmin) {
-        this.idAdmin = idAdmin;
-    }
-
-    public Admin() {
-        super();
-    }
-
-    public int getIdAdmin() {
-        return idAdmin;
-    }
-
-    public void setIdAdmin(int idAdmin) {
-        this.idAdmin = idAdmin;
-    }
-
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "idAdmin=" + idAdmin +
-                '}';
-    }
 }
