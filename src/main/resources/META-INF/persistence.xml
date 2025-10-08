@@ -4,6 +4,13 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- List your entity classes -->
         <class>com.example.hopitalnumerique.Model.Salle</class>
+        <class>com.example.hopitalnumerique.Model.Department</class>
+        <class>com.example.hopitalnumerique.Model.Consultation</class>
+        <class>com.example.hopitalnumerique.Model.Docteur</class>
+        <class>com.example.hopitalnumerique.Model.Admin</class>
+        <class>com.example.hopitalnumerique.Model.Patient</class>
+
+
 
         <properties>
             <!-- Database connection -->

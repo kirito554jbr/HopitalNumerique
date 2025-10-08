@@ -13,6 +13,10 @@ public class Personne {
         this.password = password;
     }
 
+    public Personne() {
+
+    }
+
     public String getNom() {
         return nom;
     }
