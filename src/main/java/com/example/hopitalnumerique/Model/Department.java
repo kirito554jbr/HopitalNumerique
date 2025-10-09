@@ -2,10 +2,7 @@ package com.example.hopitalnumerique.Model;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -25,6 +22,7 @@ public class Department {
 
     private String nom;
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
     private List<Docteur> docteurs;
 
     public Department(String nom) {

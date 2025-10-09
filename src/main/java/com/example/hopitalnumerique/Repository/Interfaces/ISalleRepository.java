@@ -10,4 +10,5 @@ public interface ISalleRepository {
     List<Salle> readAll();
     void update(Salle salle, int id);
     void delete(int id);
+    boolean existsByNomSalle(String nomSalle);
 }

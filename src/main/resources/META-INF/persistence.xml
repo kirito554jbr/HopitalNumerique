@@ -9,6 +9,7 @@
         <class>com.example.hopitalnumerique.Model.Docteur</class>
         <class>com.example.hopitalnumerique.Model.Admin</class>
         <class>com.example.hopitalnumerique.Model.Patient</class>
+        <class>com.example.hopitalnumerique.Model.Personne</class>
 
 
 

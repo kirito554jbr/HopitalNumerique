@@ -6,18 +6,20 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @ApplicationScoped
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Data
 @Entity
 @Table(name = "Admin")
 public class Admin extends Personne{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAdmin;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int idAdmin;
+    private String nom;
 
 }

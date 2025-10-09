@@ -30,6 +30,15 @@ public class DepartmentRepository implements IDepartmentRepository {
         em.close();
         return department;
     }
+    @Override
+    public Department finByNom (String nom){
+        EntityManager em = emf.createEntityManager();
+        Department department =em.createQuery(
+                        "SELECT d FROM Department d WHERE d.nom = :name", Department.class)
+                .setParameter("name", nom)
+                .getSingleResult();
+        return department;
+    }
 
     @Override
     public List<Department> readAll() {

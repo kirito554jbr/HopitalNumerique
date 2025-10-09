@@ -1,5 +1,6 @@
 package com.example.hopitalnumerique.Repository;
 
+import com.example.hopitalnumerique.Model.Department;
 import com.example.hopitalnumerique.Model.Salle;
 import com.example.hopitalnumerique.Repository.Interfaces.ISalleRepository;
 import jakarta.persistence.*;
@@ -59,5 +60,23 @@ public class SalleRepository implements ISalleRepository {
         }
         em.getTransaction().commit();
         em.close();
+    }
+
+    public boolean existsByNomSalle(String nomSalle) {
+
+        Salle salle = null;
+        EntityManager em = emf.createEntityManager();
+            try {
+                salle = em.createQuery(
+                            "SELECT s FROM Salle s WHERE s.nomSalle = :name", Salle.class)
+                    .setParameter("name", nomSalle)
+                    .getSingleResult();
+            }catch(NoResultException e){
+                System.out.println("Le nom salle n'existe pas");
+            }
+        if (salle != null) {
+            return true;
+        }
+        return false;
     }
 }

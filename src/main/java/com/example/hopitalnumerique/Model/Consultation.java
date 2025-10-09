@@ -2,10 +2,7 @@ package com.example.hopitalnumerique.Model;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,19 +13,24 @@ import java.time.LocalDateTime;
 @Builder
 @Data
 @Entity
-@Table(name = "consultaion")
+@Table(name = "consultation")
 public class Consultation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idConsultation;
+    @Temporal(TemporalType.DATE)
     private LocalDate date;
     private LocalDateTime heure;
-    private Enum<Status> status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     private String compteRendu;
     @ManyToOne
+    @JoinColumn(name = "patient_id")
+    @ToString.Exclude
     private Patient patient;
     @ManyToOne
+    @ToString.Exclude
     private Docteur docteur;
     @ManyToOne
     private Salle salle;

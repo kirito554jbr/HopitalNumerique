@@ -1,18 +1,31 @@
-package com.example.hopitalnumerique;
+package com.example.hopitalnumerique.web;
 
 import java.io.*;
+import java.util.List;
+
+import com.example.hopitalnumerique.Model.Salle;
+import com.example.hopitalnumerique.Repository.Interfaces.ISalleRepository;
+import com.example.hopitalnumerique.Repository.SalleRepository;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
     private String message;
+    private ISalleRepository salle;
 
     public void init() {
         message = "Hello java!";
+        salle = new SalleRepository();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        List<Salle> salles = salle.readAll();
+
+        request.setAttribute("salles", salles);
+        request.getRequestDispatcher("/WEB-INF/salles.jsp").forward(request,response);
 //        request.setCharacterEncoding("utf-8");
 //        String name = request.getParameter("name");
 

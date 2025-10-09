@@ -1,6 +1,8 @@
 package com.example.hopitalnumerique.Repository;
 
+import com.example.hopitalnumerique.Model.Department;
 import com.example.hopitalnumerique.Model.Docteur;
+import com.example.hopitalnumerique.Model.Personne;
 import com.example.hopitalnumerique.Repository.Interfaces.IDocteurRepository;
 import jakarta.persistence.*;
 
@@ -62,4 +64,31 @@ public class DocteurRepository implements IDocteurRepository {
         em.getTransaction().commit();
         em.close();
     }
+
+    public Docteur findByCredentials(Personne personne) {
+        EntityManager em = emf.createEntityManager();
+        Docteur docteur = null;
+
+        try {
+            docteur = em.createQuery("""
+            SELECT d FROM Docteur d 
+            WHERE d.nom = :nom 
+              AND d.prenom = :prenom 
+              AND d.email = :email 
+              AND d.password = :password
+        """, Docteur.class)
+                    .setParameter("nom", personne.getNom())
+                    .setParameter("prenom", personne.getPrenom())
+                    .setParameter("email", personne.getEmail())
+                    .setParameter("password", personne.getPassword())
+                    .getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Docteur not found or error: " + e.getMessage());
+        } finally {
+            em.close();
+        }
+
+        return docteur;
+    }
+
 }
