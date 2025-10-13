@@ -1,9 +1,9 @@
 package com.example.hopitalnumerique.Service.Interfaces;
 
 import com.example.hopitalnumerique.Model.Consultation;
-import com.example.hopitalnumerique.Model.Salle;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IConsultationService {
 

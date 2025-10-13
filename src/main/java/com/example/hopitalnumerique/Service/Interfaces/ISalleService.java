@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface ISalleService {
     void create(Salle salle) throws Exception;
-    Salle read(int id);
-    List<Salle> readAll();
-    void update(Salle salle, int id);
+    Salle read(int id) throws IllegalArgumentException;
+    List<Salle> readAll() throws IllegalArgumentException;
+    void update(Salle salle, int id) throws Exception;
     void delete(int id);
 }

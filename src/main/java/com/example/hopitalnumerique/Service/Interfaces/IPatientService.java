@@ -11,4 +11,5 @@ public interface IPatientService {
     List<Patient> readAll();
     void update(Patient patient, int id);
     void delete(int id);
+    boolean isNullOrEmpty(String str);
 }

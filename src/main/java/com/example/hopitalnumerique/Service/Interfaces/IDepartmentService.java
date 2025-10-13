@@ -1,14 +1,14 @@
 package com.example.hopitalnumerique.Service.Interfaces;
 
 import com.example.hopitalnumerique.Model.Department;
-import com.example.hopitalnumerique.Model.Salle;
+import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
 
 public interface IDepartmentService {
-    void create(Department department);
-    Department read(int id);
-    List<Department> readAll();
-    void update(Department department, int id);
-    void delete(int id);
+    void create(Department department)  throws IllegalArgumentException;
+    Department read(int id)  throws EntityNotFoundException;
+    List<Department> readAll() throws EntityNotFoundException;
+    void update(Department department, int id) throws IllegalArgumentException;
+    void delete(int id) throws IllegalArgumentException;
 }
