@@ -39,4 +39,10 @@ public class Docteur extends Personne {
         this.department = department;
         this.planing = planing;
     }
+
+    public Docteur(String nom, String prenom, String email, String password, Department department, String specialite) {
+        super(nom, prenom, email, password );
+        this.department = department;
+        this.specialite = specialite;
+    }
 }

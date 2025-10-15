@@ -22,10 +22,11 @@ public class ConsultationService implements IConsultationService {
 
     @Override
     public void create(Consultation consultation) {
-        // 1️⃣ Validate required fields
+        // Validate required fields
         if (consultation.getDate() == null ||
                 consultation.getHeure() == null ||
                 consultation.getStatus() == null ||
+                consultation.getCompteRendu() == null ||
                 consultation.getPatient() == null ||
                 consultation.getDocteur() == null ||
                 consultation.getSalle() == null) {
@@ -42,7 +43,7 @@ public class ConsultationService implements IConsultationService {
             throw new IllegalArgumentException("Le patient associé à la consultation est invalide.");
         }
 
-        // 4️⃣ Check for scheduling conflicts (doctor or room already booked)
+        //  Check for scheduling conflicts (doctor or room already booked)
         boolean docteurBusy = consultationRepository.existsByDocteurAndDateHeure(
                 consultation.getDocteur().getId(), consultation.getDate(), consultation.getHeure());
         if (docteurBusy) {
@@ -55,12 +56,12 @@ public class ConsultationService implements IConsultationService {
             throw new IllegalStateException("La salle est déjà réservée à cette heure.");
         }
 
-        // 5️⃣ Set default values
+        // Set default values
         if (consultation.getStatus() == null) {
             consultation.setStatus(Status.RESERVEE);
         }
 
-        // 6️⃣ Save consultation
+        // Save consultation
         this.consultationRepository.create(consultation);
     }
 
@@ -129,6 +130,16 @@ public class ConsultationService implements IConsultationService {
             throw new IllegalArgumentException("Le id est invalide.");
         }
         this.consultationRepository.delete(id);
+    }
+
+    @Override
+    public void CancelConsultation(int id){
+        Consultation consultation = this.consultationRepository.read(id);
+        if(consultation == null){
+            throw new IllegalArgumentException("La consultation avec l'ID " + id + " n'existe pas");
+        }
+        consultation.setStatus(Status.ANNULEE);
+        this.consultationRepository.update(consultation, id);
     }
 
 }

@@ -42,7 +42,7 @@ public class SalleRepository implements ISalleRepository {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
-        Salle salleGet = em.find(Salle.class,1);
+        Salle salleGet = em.find(Salle.class,id);
         salleGet.setNomSalle(salle.getNomSalle());
         salleGet.setCapacite(salle.getCapacite());
         em.merge(salleGet);
@@ -78,5 +78,20 @@ public class SalleRepository implements ISalleRepository {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Salle readByNomSalle(String nomSalle) {
+        EntityManager em = emf.createEntityManager();
+        Salle salle = null;
+        try {
+            salle = em.createQuery(
+                            "SELECT s FROM Salle s WHERE s.nomSalle = :name", Salle.class)
+                    .setParameter("name", nomSalle)
+                    .getSingleResult();
+        }catch(NoResultException e){
+            System.out.println("Le nom salle n'existe pas");
+        }
+        return salle;
     }
 }

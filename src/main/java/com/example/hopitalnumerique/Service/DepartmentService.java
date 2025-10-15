@@ -90,4 +90,9 @@ public class DepartmentService implements IDepartmentService {
         }
         this.departmentRepository.delete(id);
     }
+
+    @Override
+    public Department finByNom(String nom) {
+        return this.departmentRepository.finByNom(nom);
+    }
 }

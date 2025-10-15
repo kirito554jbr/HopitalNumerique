@@ -10,4 +10,5 @@ public interface IAdminRepository {
     List<Admin> readAll();
     void update(Admin admin, int id);
     void delete(int id);
+    Admin findByEmail(String email);
 }

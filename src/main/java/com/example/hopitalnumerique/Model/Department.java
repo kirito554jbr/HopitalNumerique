@@ -18,7 +18,7 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDepartment;
+        private int idDepartment;
 
     private String nom;
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)

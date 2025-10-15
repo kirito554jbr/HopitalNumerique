@@ -108,10 +108,10 @@ public class SalleService implements ISalleService {
                 throw new IllegalArgumentException("La capacité doit être supérieure à 0");
             }
 
-            // Check for duplicate room name (excluding current room)
-            if (this.salleRepository.existsByNomSalle(salle.getNomSalle())) {
-                throw new IllegalArgumentException("Une autre salle avec ce nom existe déjà");
-            }
+    //            // Check for duplicate room name (excluding current room)
+    //            if (this.salleRepository.existsByNomSalle(salle.getNomSalle())) {
+    //                throw new IllegalArgumentException("Une autre salle avec ce nom existe déjà");
+    //            }
 
             // Business rule: If capacity is reduced, check for existing reservations
 //            if (salle.getCapacite() < existingSalle.getCapacite()) {

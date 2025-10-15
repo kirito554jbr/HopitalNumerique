@@ -1,4 +1,4 @@
-package com.example.hopitalnumerique.web;
+package com.example.hopitalnumerique.Controller;
 
 import java.io.*;
 import java.util.List;
@@ -22,10 +22,10 @@ public class HelloServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        List<Salle> salles = salle.readAll();
+//        List<Salle> salles = salle.readAll();
 
-        request.setAttribute("salles", salles);
-        request.getRequestDispatcher("/WEB-INF/salles.jsp").forward(request,response);
+//        request.setAttribute("action", "list");
+//        request.getRequestDispatcher("/salle").forward(request,response);
 //        request.setCharacterEncoding("utf-8");
 //        String name = request.getParameter("name");
 

@@ -11,4 +11,5 @@ public interface ISalleRepository {
     void update(Salle salle, int id);
     void delete(int id);
     boolean existsByNomSalle(String nomSalle);
+    Salle readByNomSalle(String nomSalle);
 }

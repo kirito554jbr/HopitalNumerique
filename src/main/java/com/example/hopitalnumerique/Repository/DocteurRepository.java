@@ -1,8 +1,9 @@
 package com.example.hopitalnumerique.Repository;
 
-import com.example.hopitalnumerique.Model.Department;
+
 import com.example.hopitalnumerique.Model.Docteur;
 import com.example.hopitalnumerique.Model.Personne;
+import com.example.hopitalnumerique.Model.Salle;
 import com.example.hopitalnumerique.Repository.Interfaces.IDocteurRepository;
 import jakarta.persistence.*;
 
@@ -88,6 +89,37 @@ public class DocteurRepository implements IDocteurRepository {
             em.close();
         }
 
+        return docteur;
+    }
+
+    @Override
+    public Docteur findByName(String name) {
+        EntityManager em = emf.createEntityManager();
+        Docteur docteur = null;
+        try {
+            docteur = em.createQuery(
+                            "SELECT d FROM Docteur d WHERE d.nom = :name", Docteur.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+
+        }catch (Exception e){
+            System.out.println("Docteur not found or error: " + e.getMessage());
+        }
+        return docteur;
+    }
+
+    @Override
+    public Docteur findByEmail(String email) {
+        EntityManager em = emf.createEntityManager();
+        Docteur docteur = null;
+        try {
+            docteur = em.createQuery(
+                    "SELECT d FROM Docteur d WHERE d.email = :email", Docteur.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        }catch (Exception e){
+            System.out.println("Docteur not found or error: " + e.getMessage());
+        }
         return docteur;
     }
 

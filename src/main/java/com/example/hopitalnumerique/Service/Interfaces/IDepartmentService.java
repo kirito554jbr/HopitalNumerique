@@ -11,4 +11,5 @@ public interface IDepartmentService {
     List<Department> readAll() throws EntityNotFoundException;
     void update(Department department, int id) throws IllegalArgumentException;
     void delete(int id) throws IllegalArgumentException;
+    Department finByNom(String nom);
 }

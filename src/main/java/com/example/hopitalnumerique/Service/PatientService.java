@@ -93,13 +93,13 @@ public class PatientService implements IPatientService {
         }
 
         // Optional: check for duplicate email (if changed)
-        Patient duplicate = patientRepository.readByNomPatient(patient.getEmail());
+        Patient duplicate = patientRepository.findByEmail(patient.getEmail());
         if (duplicate != null && duplicate.getId() != id) {
             throw new IllegalStateException("A patient with this email already exists.");
         }
 
         // Save changes
-        patientRepository.update(existingPatient, id);
+        patientRepository.update(patient, id);
     }
 
 

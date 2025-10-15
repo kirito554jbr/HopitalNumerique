@@ -10,7 +10,6 @@ import lombok.experimental.SuperBuilder;
 
 @ApplicationScoped
 @AllArgsConstructor
-@NoArgsConstructor
 @SuperBuilder
 @Data
 @Entity
@@ -20,6 +19,6 @@ public class Admin extends Personne{
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private int idAdmin;
-    private String nom;
+//    private String nom;
 
 }

@@ -7,8 +7,12 @@
 <body>
 <h1><%= "Hello java!" %></h1>
 <br/>
+<a href="salle">Salle</a>
+
+<br/>
+<a href="docteur">Docteur</a>
+
 <a href="hello-servlet">Hello Servlet</a>
 
-<a href="salle"></a>
 </body>
 </html>
